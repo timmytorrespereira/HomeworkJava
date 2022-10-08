@@ -19,7 +19,7 @@ public class testing {
         assertEquals(25162564, homework1.exercise1(5458));
         assertEquals(1681649, homework1.exercise1(4983));
     }
-}
+
     @Test
     public void testExercise2() {
         //If the following lines give you no error then your code works fine :) ! You should not touch those tests.
@@ -54,4 +54,4 @@ public class testing {
     }
 }
 
-*/
+

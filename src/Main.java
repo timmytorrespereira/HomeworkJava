@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
-import java.math.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +9,6 @@ public class Main {
 
         //This allows us to see the output of our exercise2 function, feel free to modify this line to test out your code
         System.out.println(Arrays.toString(exercise2(new long[]{1, 2, 3}, 2)));
-
 
         //This allows us to see the output of our exercise3 function, feel free to modify this line to test out your code
         System.out.println(exercise3("krishan"));
@@ -52,14 +49,16 @@ public class Main {
 
     public static long[] exercise2(long[] numbers, int multiplier) {
         ArrayList<Long> result = new ArrayList<Long>();
-        for(int i=0 ; i<numbers.length ; i++){
-            result.add(numbers[i]*multiplier);
-        }
-        System.out.println(result);
-        //System.out.println(String.toSting(numbers));
-        //System.out.println(multiplier);
 
-        return result; //The type of your result should be an array of longs
+        for (long number : numbers) {
+            result.add(number * multiplier);
+        }
+        int n = result.size();
+        long[] final_long_array = new long[n];
+        for (int i = 0 ; i < n ; i++) {
+            final_long_array[i] = result.get(i);
+        }
+        return final_long_array;
     }
 
 
@@ -67,28 +66,27 @@ public class Main {
     * For MyStr = "krishan", the output should be "nahsirk".
     For MyStr = "ultr53o?n", the output should be "nortlu".*/
     public static String exercise3(String MyStr) {
-
-        //System.out.println(MyStr);
-        return result; //The type of your result should be a String
+        MyStr = MyStr.replaceAll("[^a-zA-Z]", "");
+        StringBuilder reverse_string =new StringBuilder(MyStr);
+        reverse_string.reverse();
+        return reverse_string.toString();
     }
 
     /* From a string containing consecutive double letters, write a string that outputs the string with simple letters instead of double ones.
     Input: `Camillelleeaa`.
     Output: `"Camilelea"` ?*/
     public static String exercise4(String MyStr) {
-        String result = "";
-        for (int i = 0 ; i<MyStr.length() ; ++i) {
-            if (MyStr[i] != MyStr[i+1]){
-                result = result + MyStr[i];
-            } else {
-                continue;
-            }
-
+        if(MyStr.isEmpty()) {
+            return "";
         }
-        //Your code here
-        System.out.println(MyStr);
-        return result; //The type of your result should be a string
+        StringBuilder builder = new StringBuilder();
+        char[] arr = MyStr.toCharArray();
+        builder.append(arr[0]);
+        for (int i = 1 ; i<MyStr.length() ; i++) {
+            if (arr[i] != arr[i-1]){
+                builder.append(arr[i]);
+            }
+        }
+        return builder.toString(); //The type of your result should be a string
     }
-
-
 }
